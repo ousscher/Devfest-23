@@ -18,14 +18,12 @@ const userSchema = new Schema({
     } , 
     lot : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'Appartment'
-    }, 
-    state : {
-        type : Boolean,
-        required : true,
 
+        ref : 'Appartement'
+    },
+    rest : {
+        type :  Number
     }
-    
 });
 
 //static signup method
