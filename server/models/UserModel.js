@@ -17,7 +17,7 @@ const userSchema = new Schema({
     } , 
     lot : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : ''
+        ref : 'Appartement'
     }
     
 });

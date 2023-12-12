@@ -8,15 +8,15 @@ const appartementSchema = new Schema({
         required : true,
     }, 
     bloc : {
-        type : Integer , 
+        type : Number , 
         required : true, 
     } ,
     etage : {
-        type : Integer , 
+        type : Number , 
         required : true, 
     } ,
     lotNumber : {
-        type : Integer , 
+        type : Number , 
         required : true, 
     },
     typeAppartement : {

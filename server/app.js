@@ -3,6 +3,7 @@ const express = require ('express');
 const mongoose = require('mongoose');
 const app = express();
 const connectDB = require('./models/activate')
+const aprRouter = require('./routes/appartementRoute')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
 
@@ -15,11 +16,12 @@ app.use((req , res , next)=>{
 
 //routes
 app.use('/api/user' ,userRoutes );
+app.use('/api/apartement' , aprRouter)
 const start = ()=>{
     connectDB(process.env.MONGO_URI)
     .then(()=>{
             app.listen(process.env.PORT , ()=>{
-                console.log('connect to db and listening on port  4000');
+                console.log(`connect to db and listening on port ${process.env.PORT}`);
             });
         })
     .catch((err)=>{
