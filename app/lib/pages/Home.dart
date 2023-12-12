@@ -1,3 +1,4 @@
+import 'package:app/components/NavBar.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,6 +24,7 @@ class _HomeState extends State<Home> {
       style: GoogleFonts.itim(fontSize: 20, color: myDark),
     )),
   ];
+  final int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -186,6 +188,40 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+          ),
+        ),
+        bottomNavigationBar: Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 217, 217, 217),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 5,
+              ),
+            ],
+          ),
+          child: CustomBottomNavigationBar(
+            selectedIndex: selectedIndex,
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  Navigator.pushNamed(context, '/');
+                  break;
+                case 1:
+                  Navigator.pushNamed(context, '/progress');
+                  break;
+                case 2:
+                  Navigator.pushNamed(context, '/notification');
+                  break;
+                case 3:
+                  Navigator.pushNamed(context, '/payment');
+                  break;
+                case 4:
+                  Navigator.pushNamed(context, '/virtual');
+                  break;
+              }
+            },
           ),
         ),
       ),

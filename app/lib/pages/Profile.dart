@@ -24,7 +24,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: NavBar(activePath: 'home',),
-    );
+        // body: NavBar(activePath: 'home',),
+        );
   }
 }
