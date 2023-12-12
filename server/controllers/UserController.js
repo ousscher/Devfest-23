@@ -60,14 +60,14 @@ const getUser = async(req,res)=>{
     const {lotNumber} = req.params
 
     try {
-        const apr_id = await Appartement.findOne({lotNumber})
-        if(apr_id){
+        const apr = await Appartement.findOne({lotNumber})
+        if(!apr){
             throw Error('appartement doesn\'n existe')
         }
-        const userData = await User.findOne({lot : apr_id._id})
+        const userData = await User.findOne({lot : apr._id})
         res.status(200).json({userData})
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({error : error.message})
     }
 }
 

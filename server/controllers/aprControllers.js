@@ -17,7 +17,7 @@ const aprPost= async(req ,res)=>{
         const data = await Appartement.create({location , bloc , etage , lotNumber , typeAppartement})
             res.status(201).json({data})
     } catch (error) {
-        res.status(500).json(err)
+        res.status(500).json({error : error.message})
     }
 }
 

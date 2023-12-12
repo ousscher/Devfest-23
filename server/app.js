@@ -5,20 +5,31 @@ const app = express();
 const connectDB = require('./models/activate')
 const aprRouter = require('./routes/appartementRoute')
 const adminRouter = require('./routes/adminRouter')
+const progressRouter = require('./routes/progressRouter')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
 
+
+
+
+
 app.use(express.json());
+
 
 app.use((req , res , next)=>{
     console.log(req.path , req.method);
     next();
 });
 
+
 //routes
 app.use('/api/user' ,userRoutes );
 app.use('/api/apartement' , aprRouter)
 app.use('/api/admin' , adminRouter)
+app.use('/api/progress' , progressRouter)
+
+
+
 const start = ()=>{
     connectDB(process.env.MONGO_URI)
     .then(()=>{
