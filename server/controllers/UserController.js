@@ -1,11 +1,15 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 const Appartement = require("../models/appartement");
+const jwt = require("jsonwebtoken");
+
+const createToken = (payload) => {
+  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3d" });
+  return token;
+};
 
 //login user
-const loginUser = async (req, res) => {
-  res.json({ mssg: "login user" });
-};
+const loginUser = async (req, res) => {};
 
 //signup User
 
@@ -42,9 +46,10 @@ const signupUser = async (req, res) => {
       password: hashPassword,
       lot: existeApr._id,
     });
-    console.log(data._id.toString());
-    res.status(201).json({ data });
-    return data._id.toString();
+    const payload = { userId: data._id };
+    const token = createToken(payload);
+
+    res.status(201).json({ userName: data.userName, token: token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -52,10 +57,13 @@ const signupUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { lotNumber } = req.params;
-  const apr_id = await Appartement.findOne({ lotNumber })._id;
 
   try {
-    const userData = await User.findOne({ lot: apr_id });
+    const apr_id = await Appartement.findOne({ lotNumber });
+    if (apr_id) {
+      throw Error("appartement doesn'n existe");
+    }
+    const userData = await User.findOne({ lot: apr_id._id });
     res.status(200).json({ userData });
   } catch (error) {
     res.status(400).json({ error });
@@ -67,9 +75,10 @@ const getUsers = async (req, res) => {
     console.log(users);
     res.status(200).json({ users });
   } catch {
-    res.status(400).json({ message : "Error while fetching the users"})
+    res.status(400).json({ message: "Error while fetching the users" });
   }
 };
+
 module.exports = {
   loginUser,
   signupUser,
