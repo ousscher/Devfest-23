@@ -7,6 +7,7 @@ const appartementSchema = new Schema({
         type: String,
         required: true,
     },
+
     bloc: {
         type: Number,
         required: true,
