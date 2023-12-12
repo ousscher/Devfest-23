@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt')
 
+
 const userSchema = new Schema({
     email : {
         type : String , 
@@ -17,7 +18,12 @@ const userSchema = new Schema({
     } , 
     lot : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : ''
+        ref : 'Appartment'
+    }, 
+    state : {
+        type : Boolean,
+        required : true,
+
     }
     
 });

@@ -23,8 +23,7 @@ const appartementSchema = new Schema({
         type : String , 
         required : true, 
     } , 
-    
 });
 
-const Appartment = mongoose.model('appartement' , appartementSchema);
+const Appartment = mongoose.model('Appartement' , appartementSchema);
 module.exports = Appartment;
