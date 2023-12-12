@@ -24,6 +24,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
+
       body: Container(
         width: screenSize.width,
         decoration: BoxDecoration(
