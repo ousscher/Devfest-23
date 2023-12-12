@@ -12,6 +12,10 @@ const admin = async(req,res,next)=>{
 
         const apr_id = await Appartement.findOne({lotNumber})
 
+        if(apr_id){
+            throw Error('there is no lot with this number')
+        }
+
         const user_id = await User.findOne({lot : apr_id._id})
 
         const data = await User.findByIdAndUpdate(user_id.id , {rest} , { new: true })
