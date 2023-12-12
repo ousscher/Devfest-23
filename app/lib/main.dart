@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: "virtualVisit",
+      initialRoute: "profil",
       routes: {
         "SplashScreen": (context) => const SplashScreen(),
         "login": (context) => const Login(),
         "profil": (context) => const Profile(),
-        "home" : (context)=>Home(),
-        "virtualVisit" : (context) =>VirtualVisit(),
+        "home": (context) => Home(),
+        "virtualVisit": (context) => VirtualVisit(),
       },
     );
   }

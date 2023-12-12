@@ -24,7 +24,6 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-
       body: Container(
         width: screenSize.width,
         decoration: BoxDecoration(
@@ -40,7 +39,7 @@ class _ProfileState extends State<Profile> {
                   0, screenSize.height * 0.06, screenSize.width * 0.7, 0),
               child: FloatingActionButton(
                 onPressed: () {
-                  //added the pop funciton 
+                  //added the pop funciton
                 }, // Menu button
                 child: Icon(
                   Icons.arrow_back,
@@ -51,23 +50,21 @@ class _ProfileState extends State<Profile> {
             ),
             Text(
               'Profile',
-              style:GoogleFonts.itim(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: myWhite,
-                  ),
+              style: GoogleFonts.itim(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: myWhite,
+              ),
             ),
             SizedBox(
-              height: 0.02*screenSize.height,
+              height: 0.02 * screenSize.height,
             ),
             InkWell(
-              onTap: ()async {
-                  },
-               child: Container(
-                width: screenSize.width * 0.26,
-                height: screenSize.width * 0.26,
-                child: Image(image: AssetImage("assets/images/account.png"))
-              ),
+              onTap: () async {},
+              child: Container(
+                  width: screenSize.width * 0.26,
+                  height: screenSize.width * 0.26,
+                  child: Image(image: AssetImage("assets/images/account.png"))),
             ),
             SizedBox(
               height: screenSize.height * 0.005,
@@ -84,201 +81,220 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             Container(
-              height: screenSize.height*0.1,
-              width: screenSize.width*0.8,
+              height: screenSize.height * 0.1,
+              width: screenSize.width * 0.8,
               child: Column(
                 children: [
                   //titile
                   Container(
-                    width:screenSize.width*0.8 ,
+                    width: screenSize.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text("Username" , style: GoogleFonts.itim(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              color: myDark,
-                            ),
-                            textAlign: TextAlign.left,
-                            ),
+                      child: Text(
+                        "Username",
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ), 
+                  ),
                   Container(
-                    width: screenSize.width*0.8,
-                    height: screenSize.height*0.05,
+                    width: screenSize.width * 0.8,
+                    height: screenSize.height * 0.05,
                     decoration: BoxDecoration(
                       color: myWhite,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text('Oussama' , 
-                      style: GoogleFonts.itim(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: myDark,
-                          ),),
+                      child: Text(
+                        'Oussama',
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Container(
-              height: screenSize.height*0.1,
-              width: screenSize.width*0.8,
+              height: screenSize.height * 0.1,
+              width: screenSize.width * 0.8,
               child: Column(
                 children: [
                   //titile
                   Container(
-                    width:screenSize.width*0.8 ,
+                    width: screenSize.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text("email" , style: GoogleFonts.itim(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              color: myDark,
-                            ),
-                            textAlign: TextAlign.left,
-                            ),
+                      child: Text(
+                        "email",
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ), 
+                  ),
                   Container(
-                    width: screenSize.width*0.8,
-                    height: screenSize.height*0.05,
+                    width: screenSize.width * 0.8,
+                    height: screenSize.height * 0.05,
                     decoration: BoxDecoration(
                       color: myWhite,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text('Oussama' , 
-                      style: GoogleFonts.itim(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: myDark,
-                          ),),
+                      child: Text(
+                        'Oussama',
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Container(
-              height: screenSize.height*0.1,
-              width: screenSize.width*0.8,
+              height: screenSize.height * 0.1,
+              width: screenSize.width * 0.8,
               child: Column(
                 children: [
                   //titile
                   Container(
-                    width:screenSize.width*0.8 ,
+                    width: screenSize.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text("Phone" , style: GoogleFonts.itim(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              color: myDark,
-                            ),
-                            textAlign: TextAlign.left,
-                            ),
+                      child: Text(
+                        "Phone",
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ), 
+                  ),
                   Container(
-                    width: screenSize.width*0.8,
-                    height: screenSize.height*0.05,
+                    width: screenSize.width * 0.8,
+                    height: screenSize.height * 0.05,
                     decoration: BoxDecoration(
                       color: myWhite,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text('0555555555' , 
-                      style: GoogleFonts.itim(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: myDark,
-                          ),),
+                      child: Text(
+                        '0555555555',
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Container(
-              height: screenSize.height*0.1,
-              width: screenSize.width*0.8,
+              height: screenSize.height * 0.1,
+              width: screenSize.width * 0.8,
               child: Column(
                 children: [
                   //titile
                   Container(
-                    width:screenSize.width*0.8 ,
+                    width: screenSize.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text("Lot number" , style: GoogleFonts.itim(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              color: myDark,
-                            ),
-                            textAlign: TextAlign.left,
-                            ),
+                      child: Text(
+                        "Lot number",
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ), 
+                  ),
                   Container(
-                    width: screenSize.width*0.8,
-                    height: screenSize.height*0.05,
+                    width: screenSize.width * 0.8,
+                    height: screenSize.height * 0.05,
                     decoration: BoxDecoration(
                       color: myWhite,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text('0xxxxx' , 
-                      style: GoogleFonts.itim(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: myDark,
-                          ),),
+                      child: Text(
+                        '0xxxxx',
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
             Container(
-              height: screenSize.height*0.1,
-              width: screenSize.width*0.8,
+              height: screenSize.height * 0.1,
+              width: screenSize.width * 0.8,
               child: Column(
                 children: [
                   //titile
                   Container(
-                    width:screenSize.width*0.8 ,
+                    width: screenSize.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text("Username" , style: GoogleFonts.itim(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.bold,
-                              color: myDark,
-                            ),
-                            textAlign: TextAlign.left,
-                            ),
+                      child: Text(
+                        "Username",
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ), 
+                  ),
                   Container(
-                    width: screenSize.width*0.8,
-                    height: screenSize.height*0.05,
+                    width: screenSize.width * 0.8,
+                    height: screenSize.height * 0.05,
                     decoration: BoxDecoration(
                       color: myWhite,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text('Oussama' , 
-                      style: GoogleFonts.itim(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: myDark,
-                          ),),
+                      child: Text(
+                        'Oussama',
+                        style: GoogleFonts.itim(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.bold,
+                          color: myDark,
+                        ),
+                      ),
                     ),
                   )
                 ],
               ),
             ),
-            
           ],
         ),
       ),
