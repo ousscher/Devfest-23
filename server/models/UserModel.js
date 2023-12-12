@@ -6,12 +6,20 @@ const userSchema = new Schema({
     email : {
         type : String , 
         required : true,
-        unique : true
     }, 
     password : {
         type : String , 
         required : true, 
+    } ,
+    userName : {
+        type : String , 
+        required : true, 
+    } , 
+    lot : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : ''
     }
+    
 });
 
 //static signup method
