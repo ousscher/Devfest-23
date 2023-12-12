@@ -60,7 +60,7 @@ const getUser = async (req, res) => {
 
   try {
     const apr_id = await Appartement.findOne({ lotNumber });
-    if (apr_id) {
+    if (!apr_id) {
       throw Error("appartement doesn'n existe");
     }
     const userData = await User.findOne({ lot: apr_id._id });
