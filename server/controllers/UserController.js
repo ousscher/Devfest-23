@@ -46,7 +46,23 @@ const signupUser = async (req , res)=>{
     
 };
 
+
+const getUser = async(req,res)=>{
+
+    const {lotNumber} = req.params
+    const apr_id = await Appartement.findOne({lotNumber})._id
+
+    try {
+
+        const userData = await User.findOne({lot : apr_id})
+        res.status(200).json({userData})
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
+
 module.exports = {
     loginUser, 
     signupUser,
+    getUser
 }
