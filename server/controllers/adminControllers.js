@@ -11,18 +11,19 @@ const admin = async(req,res,next)=>{
         }
 
         const apr_id = await Appartement.findOne({lotNumber})
+        console.log(apr_id)
 
-        if(apr_id){
+        if(!apr_id){
             throw Error('there is no lot with this number')
         }
 
-        const user_id = await User.findOne({lot : apr_id._id})
+        const user = await User.findOne({lot : apr_id._id})
 
-        const data = await User.findByIdAndUpdate(user_id.id , {rest} , { new: true })
+        const data = await User.findByIdAndUpdate(user.id , {rest} , { new: true })
 
         res.status(200).json({data})
-    } catch (err) {
-        res.status(500).json({err})
+    } catch (error) {
+        res.status(500).json({error : error.message})
     }
 
 }
