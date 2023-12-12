@@ -2,6 +2,7 @@ import 'package:app/pages/Home.dart';
 import 'package:app/pages/Login.dart';
 import 'package:app/pages/Profile.dart';
 import 'package:app/pages/SplachScreen.dart';
+import 'package:app/pages/VirtualVisit.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,12 +29,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: "profil",
+      initialRoute: "virtualVisit",
       routes: {
         "SplashScreen": (context) => const SplashScreen(),
         "login": (context) => const Login(),
         "profil": (context) => const Profile(),
         "home" : (context)=>Home(),
+        "virtualVisit" : (context) =>VirtualVisit(),
       },
     );
   }
