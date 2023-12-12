@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: "profil",
+      initialRoute: "home",
       routes: {
         "SplashScreen": (context) => const SplashScreen(),
         "login": (context) => const Login(),
         "profil": (context) => const Profile(),
-        "home" : (context)=>Home(),
+        "home": (context) => Home(),
       },
     );
   }
