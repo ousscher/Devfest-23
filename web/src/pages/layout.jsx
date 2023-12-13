@@ -67,8 +67,8 @@ function Layout() {
         ) : (
           <FaTimes
             size="24px"
-            color="blue"
-            className="sm:hidden absolut flex top-6 left-5"
+            color="#2B82FB"
+            className="sm:hidden  flex top-6 left-5"
             onClick={() => setBol(false)}
           />
         )}

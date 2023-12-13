@@ -10,13 +10,40 @@ const createToken = (payload)=>{
 
 //login user
 const loginUser = async (req , res)=>{
-    
+    const {email , password} = req.body
+
+    try {
+        if(!email || !password){
+            throw Error('Please fill all the fieldes')
+        }
+
+        const exist = await User.findOne({email})
+        console.log(exist)
+        if(!exist){
+            throw Error('Incorrect email')
+        }
+
+        const passwordMatch = await bcrypt.compare(password, exist.password);
+        console.log(passwordMatch)
+        if (!passwordMatch) {
+        throw new Error('Invalid password');
+        }
+
+
+        const payload = { userId: exist._id }
+        const token = createToken(payload)
+
+        res.status(200).json({userName : exist.userName , token : token})
+
+    } catch (error) {
+        res.status(500).json({error : error.message})
+    }
 };
 
 //signup User
 
 const signupUser = async (req , res)=>{
-    const {userName , email , password , lotNumber} = req.body
+    const {userName , email , password , lotNumber , phoneNumber} = req.body
     try {
         if(!userName || !email || !password){
             throw Error('All Fields Should Be Filled')
@@ -32,18 +59,25 @@ const signupUser = async (req , res)=>{
             throw Error('The Email Is Already Used')
             return
         }
+        const existeApr = await Appartement.findOne({lotNumber})
+
+        if(!existeApr){
+            throw Error ('This apartement is not exist')
+        }
+
+        const existAprUser = await User.findOne({lot : existeApr._id})
+
+        if(existAprUser){
+            throw Error(`The appartement is already for ${existAprUser.userName}`)
+        }
 
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password , salt)
 
-        const existeApr = await Appartement.findOne({lotNumber})
-
-        if(!existeApr){
-            throw Error ('There is no appartement with this number')
-        }
+        
 
         const data = await User.create({userName , email , password : hashPassword , lot : existeApr._id})
-        const payload = { userId: data._id }; 
+        const payload = { userId: data._id }
         const token = createToken(payload)
         
         res.status(201).json({userName : data.userName , token : token})
