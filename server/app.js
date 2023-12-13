@@ -7,6 +7,7 @@ const aprRouter = require('./routes/appartementRoute')
 const adminRouter = require('./routes/adminRouter')
 const progressRouter = require('./routes/progressRouter')
 const paimentRouter = require('./routes/paimentRouter')
+const getRouters = require('./routes/getRouters')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
 
@@ -24,11 +25,12 @@ app.use((req , res , next)=>{
 
 
 //routes
-app.use('/api/user' ,userRoutes );
+app.use('/api/user' ,userRoutes )
 app.use('/api/apartement' , aprRouter)
 app.use('/api/admin' , adminRouter)
 app.use('/api/progress' , progressRouter)
 app.use('/api/paiment' , paimentRouter)
+app.use('/api/get' , getRouters)
 
 
 
