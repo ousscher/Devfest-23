@@ -33,10 +33,12 @@ const userRoutes = require("./routes/user");
 const aprRouter = require("./routes/appartementRoute");
 const adminRouter = require("./routes/adminRouter");
 const notifRouter = require("./routes/notificationsRoutres");
+const paimentRouter=require("./routes/paimentRouter")
+const progressRouter=require("./routes/progressRouter")
 const { addNotif } = require("./controllers/Notification");
 const Notification = require("./models/Notification");
-app.use('/api/progress' , progressRouter)
-app.use('/api/paiment' , paimentRouter)
+// app.use('/api/progress' , progressRouter)
+// app.use('/api/paiment' , paimentRouter)
 app.use("/api/user", userRoutes);
 app.use("/api/apartement", aprRouter);
 app.use("/api/admin", adminRouter);
