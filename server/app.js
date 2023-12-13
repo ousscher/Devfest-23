@@ -7,7 +7,14 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
-
+const connectDB = require('./models/activate')
+const aprRouter = require('./routes/appartementRoute')
+const adminRouter = require('./routes/adminRouter')
+const progressRouter = require('./routes/progressRouter')
+const paimentRouter = require('./routes/paimentRouter')
+const getRouters = require('./routes/getRouters')
+// const workoutRoutes = require('./routes/workouts');
+const userRoutes = require('./routes/user')
 // Database connection
 const connectDB = require("./models/activate");
 const startDatabaseConnection = async () => {
@@ -43,6 +50,9 @@ app.use("/api/user", userRoutes);
 app.use("/api/apartement", aprRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/notif", notifRouter);
+app.use('/api/progress' , progressRouter)
+app.use('/api/paiment' , paimentRouter)
+app.use('/api/get' , getRouters)
 // app.post("/api/notif/add", addNotif);
 app.post("/api/notif/add", async (req, res) => {
   try {
@@ -67,7 +77,8 @@ app.post("/api/notif/mark-read/:id", async (req, res) => {
     if (!notification) {
       return res.status(404).send("Notification not found");
     }
-    io.emit("read-notification", notification);
+    io.emit("read-notification", notification);//routes
+
 
     res.status(200).send(`notification ${notificationId} marked as read`);
   } catch (error) {
