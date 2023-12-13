@@ -11,7 +11,6 @@ const createToken = (payload)=>{
 //login user
 const loginUser = async (req , res)=>{
     const {email , password} = req.body
-
     try {
         if(!email || !password){
             throw Error('Please fill all the fieldes')
@@ -33,7 +32,9 @@ const loginUser = async (req , res)=>{
         const payload = { userId: exist._id }
         const token = createToken(payload)
 
-        res.status(200).json({userName : exist.userName , token : token})
+        const apr = await Appartement.findOne({_id:exist.lot})
+    
+        res.status(200).json({ lotNumber: apr.lotNumber , token : token})
 
     } catch (error) {
         res.status(500).json({error : error.message})

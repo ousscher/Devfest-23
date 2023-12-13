@@ -3,15 +3,35 @@ import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  int lotNumber;
+  Home({Key? key, required this.lotNumber }) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  late String userName;
+  
+  Future<void> fetchDataUser() async {
+    try {
+      final response = await http.get(
+        Uri.parse('http://10.0.2.2:4000/api/get/:${widget.lotNumber}' , ),
+      );
+      if (response.statusCode == 200) {
+        print(response);
+      } else {
+        print('Échec de la connexion');
+      }
+    } catch (error) {
+      print('Erreur lors de la connexion: ${error.toString()}');
+    }
+  }
+
   final List<DataColumn> columns = [
     DataColumn(
         label: Text(
@@ -27,6 +47,12 @@ class _HomeState extends State<Home> {
   final int selectedIndex = 0;
 
   @override
+  void initState() {
+    fetchDataUser();
+    // TODO: implement initState
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
@@ -99,7 +125,7 @@ class _HomeState extends State<Home> {
                           width: 140,
                         ),
                         Text(
-                          'Hello {username}!',
+                          'Hello {user}!',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.itim(
                             fontSize: 38,
