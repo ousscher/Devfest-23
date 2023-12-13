@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const progressSchema = new mongoose.Schema({
-    image1:{
+    image:{
         public_id:{
             type : String,
             required : true,
@@ -17,8 +17,12 @@ const progressSchema = new mongoose.Schema({
     progressType : {
         type : String , 
         required : true
+    },
+    lot :{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Appartement'
     }
-})
+},{timestamps : true})
 
 const Progress = mongoose.model('progress', progressSchema)
 

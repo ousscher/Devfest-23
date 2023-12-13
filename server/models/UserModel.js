@@ -19,24 +19,15 @@ const userSchema = new Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Appartement'
     },
+    paiment : {
+        type : Array
+    },
+    phoneNumber : {
+        type : String
+    },
     rest : {
-        type :  Number
+        type : Number
     }
 });
-
-//static signup method
-userSchema.static.signup = async function(email , password){
-    const exists = await this.findOne({email})
-    if (exists){
-        throw Error('Email is already in use');
-    }
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password , salt);
-    const user = await this.create({
-        email , password : hash
-    });
-    return user;
-} 
-
 
 module.exports = mongoose.model( 'User', userSchema);

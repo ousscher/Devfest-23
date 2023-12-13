@@ -1,12 +1,16 @@
-const Progress = require('../models/progressModel')
+const Paiment = require('../models/paimentModel')
+const Appartement = require('../models/appartement')
 const cloudinary = require('cloudinary')
 
-const createProgress = async(req,res)=>{
-    const {image , descreption , progressType , lotNumber} = req.body
+
+const createPaiment = async(req , res)=>{
+    const {image , deadline , payed , lotNumber} = req.body
+
     try {
-        if(!image || !progressType){
-            throw Error('Please add the type of the progress')
+        if(!image || !deadline || !payed || !lotNumber){
+            throw Error('Please fill All the filed')
         }
+
         const existeApr = await Appartement.findOne({lotNumber})
 
         if(!existeApr){
@@ -17,16 +21,17 @@ const createProgress = async(req,res)=>{
                 folder :"processImages"
             }
         })
-        const data = await Progress.create({image:{
+
+        const data = await Paiment.create({image:{
             public_id : result.public_id,
             url : result.secure_url
-        },descreption , progressType ,lot : existeApr._id})
-        res.status(201).json(data)
+        } , deadline , payed , lot : existeApr._id})
+        res.status(201).json({data})
 
     } catch (error) {
         res.status(500).json({error : error.message})
     }
+
 }
 
-
-module.exports = createProgress
+module.exports = createPaiment
