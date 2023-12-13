@@ -2,8 +2,8 @@ import 'package:app/components/TimeLIneTail.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:app/components/TimeLIneTail.dart';
-import 'package:app/components/AppBar.dart';
 import 'package:app/constants.dart';
+import 'package:app/components/AppBar.dart';
 
 class ProgressScreen extends StatefulWidget {
   ProgressScreen({Key? key}) : super(key: key);
