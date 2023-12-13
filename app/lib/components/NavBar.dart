@@ -1,4 +1,3 @@
-
 import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -49,6 +48,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.video_chat_rounded),
             label: 'Virtual',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy_outlined),
+            label: 'Files',
           ),
         ],
       ),

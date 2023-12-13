@@ -3,9 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:app/constants.dart';
 
 class CustomAppBar extends StatelessWidget {
-  final String titleText; // Add a parameter for the title text
+  final String titleText;
+  final BuildContext context; // Add a parameter for the BuildContext
 
-  const CustomAppBar({Key? key, required this.titleText}) : super(key: key);
+  const CustomAppBar({
+    Key? key,
+    required this.titleText,
+    required this.context, // Pass the BuildContext as a parameter
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class CustomAppBar extends StatelessWidget {
       title: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          titleText, // Use the passed text value
+          titleText,
           style: GoogleFonts.itim(
             color: myWhite,
             fontSize: 25.0,
@@ -25,7 +30,10 @@ class CustomAppBar extends StatelessWidget {
       ),
       centerTitle: true,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          
+          Navigator.of(context).pop(); // Use the provided context for pop
+        },
         icon: Icon(
           Icons.arrow_back_ios_new,
           size: 30,

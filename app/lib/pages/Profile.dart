@@ -39,7 +39,7 @@ class _ProfileState extends State<Profile> {
                   0, screenSize.height * 0.06, screenSize.width * 0.7, 0),
               child: FloatingActionButton(
                 onPressed: () {
-                  //added the pop funciton
+                  Navigator.pop(context);
                 }, // Menu button
                 child: Icon(
                   Icons.arrow_back,

@@ -1,6 +1,8 @@
+import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/AppBar.dart';
 import '../components/NavBar.dart';
@@ -55,33 +57,142 @@ class _NotificationPageState extends State<NotificationPage> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CustomAppBar(titleText: 'Notifications'),
+          child: CustomAppBar(
+            titleText: 'Notifications',
+            context: context,
+          ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            Container(
-              height: 0.14*size.height,
-              width: 0.8*size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 0.14*size.height,
-                    width: 0.2*size.width,
-                    color: Colors.amber,
+          child: Container(
+            width: size.width,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: myGrey,
+                    ),
+                    width: size.width * 0.9,
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(
+                              Icons.payment,
+                              color: Color.fromRGBO(0, 128, 0, 1),
+                              size: 50,
+                            ),
+                            Text(
+                              '05-06-2003',
+                              style: GoogleFonts.itim(
+                                color: myDark,
+                                fontSize: 10.0,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          'Dear Slimene, a frindly reminder: \n Your payment is due in 72 hours.',
+                          style: GoogleFonts.itim(
+                            color: myDark,
+                            fontSize: 15.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
+                    ),
                   ),
-                  Container(
-                    height: 0.14*size.height,
-                    width: 0.5*size.width,
-                    color: Colors.black,
-                  )
-                ],
-              ),
-            )
-          ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: myGrey,
+                    ),
+                    width: size.width * 0.9,
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(
+                              Icons.file_copy,
+                              color: myDark,
+                              size: 50,
+                            ),
+                            Text(
+                              '05-06-2003',
+                              style: GoogleFonts.itim(
+                                color: myDark,
+                                fontSize: 10.0,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          'Dear Slimene, a frindly reminder: \n Your payment is due in 72 hours.',
+                          style: GoogleFonts.itim(
+                            color: myDark,
+                            fontSize: 15.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: myGrey,
+                    ),
+                    width: size.width * 0.9,
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(
+                              Icons.ads_click_sharp,
+                              color: Color.fromRGBO(0, 146, 244, 1),
+                              size: 50,
+                            ),
+                            Text(
+                              '05-06-2003',
+                              style: GoogleFonts.itim(
+                                color: myDark,
+                                fontSize: 10.0,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          'Dear Slimene, a frindly reminder: \n Your payment is due in 72 hours.',
+                          style: GoogleFonts.itim(
+                            color: myDark,
+                            fontSize: 15.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
           selectedIndex: 2,
@@ -101,6 +212,9 @@ class _NotificationPageState extends State<NotificationPage> {
                 break;
               case 4:
                 Navigator.pushNamed(context, '/virtual');
+                break;
+              case 5:
+                Navigator.pushNamed(context, '/files');
                 break;
             }
           },

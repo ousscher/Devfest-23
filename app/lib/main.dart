@@ -33,12 +33,14 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: "/notification",
+      initialRoute: "/SplashScreen",
       routes: {
         "/SplashScreen": (context) => const SplashScreen(),
         "/login": (context) => const Login(),
         "profil": (context) => const Profile(),
-        // "/": (context) => Home(),
+        "/": (context) => Home(
+              lotNumber: 10,
+            ),
         "/progress": (context) => ProgressScreen(),
         "/notification": (context) => NotificationPage(),
         "/payment": (context) => Payment(),
