@@ -39,6 +39,7 @@ class BuildTimelineTile extends StatelessWidget {
             iconStyle: IconStyle(iconData: Icons.done, color: myWhite),
           ),
           endChild: Container(
+            color: myWhite,
             height: 300,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -84,7 +85,7 @@ class BuildTimelineTile extends StatelessWidget {
 
 class ImageSScroller extends StatelessWidget {
   final List<String> images = [
-    'assets/images/logo.png',
+    'assets/images/vr2.png',
     'assets/images/vr1.png',
     'assets/images/vr1.png',
   ];
@@ -96,19 +97,22 @@ class ImageSScroller extends StatelessWidget {
       child: PageView.builder(
         itemCount: images.length,
         itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      LargeImageScreen(imageUrl: images[index]),
-                ),
-              );
-            },
-            child: Image.asset(
-              images[index],
-              fit: BoxFit.cover,
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        LargeImageScreen(imageUrl: images[index]),
+                  ),
+                );
+              },
+              child: Image.asset(
+                images[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },

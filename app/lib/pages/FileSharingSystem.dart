@@ -22,7 +22,10 @@ class _FileSharingSystemState extends State<FileSharingSystem> {
         child: Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CustomAppBar(titleText: 'Sharing System'),
+        child: CustomAppBar(
+          titleText: 'Sharing System',
+          context: context,
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -30,10 +33,12 @@ class _FileSharingSystemState extends State<FileSharingSystem> {
           width: size.width,
           child: Column(
             children: [
-              SizedBox(height: 0.05*size.height,),
+              SizedBox(
+                height: 0.05 * size.height,
+              ),
               Container(
-                width: 0.6*size.width,
-                height: 0.2*size.height,
+                width: 0.6 * size.width,
+                height: 0.2 * size.height,
                 padding: EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -46,110 +51,129 @@ class _FileSharingSystemState extends State<FileSharingSystem> {
                 child: Column(
                   children: [
                     Image.asset('assets/images/upload.png'),
-                    Text("Upload File" , 
-                    style: GoogleFonts.itim(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
-                        ),
-                    ), 
-                    Text("Drag and drop or browse to choose file" , 
-                    style: GoogleFonts.itim(
-                          fontSize: 10.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
-                        ),
-                    ), 
-
+                    Text(
+                      "Upload File",
+                      style: GoogleFonts.itim(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: myDark,
+                      ),
+                    ),
+                    Text(
+                      "Drag and drop or browse to choose file",
+                      style: GoogleFonts.itim(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.bold,
+                        color: myDark,
+                      ),
+                    ),
                   ],
                 ),
-              ) , 
-              SizedBox(height: 0.02*size.height,),
-              Padding(padding:EdgeInsets.all(8.0) , 
-              child: Text('Missing Files' , 
-              style: GoogleFonts.itim(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
-                        ),
               ),
-              ) , 
+              SizedBox(
+                height: 0.02 * size.height,
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Missing Files',
+                  style: GoogleFonts.itim(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: myDark,
+                  ),
+                ),
+              ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     Container(
-                      height: 0.15*size.height,
-                      width: 0.3*size.width,
-                      decoration:BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/images/file.png'))
-                      ), 
-                      child: Center(child: Text(
-                        "Carte xxx", 
-                        style : GoogleFonts.itim(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
+                      height: 0.15 * size.height,
+                      width: 0.3 * size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/file.png'))),
+                      child: Center(
+                        child: Text(
+                          "Carte xxx",
+                          style: GoogleFonts.itim(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                            color: myDark,
+                          ),
                         ),
-                      ),),
+                      ),
                     ),
-                    SizedBox(width: 0.05*size.width,),
-                    Container(
-                      height: 0.15*size.height,
-                      width: 0.3*size.width,
-                      decoration:BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/images/file.png'))
-                      ), 
-                      child: Center(child: Text(
-                        "Carte xxx", 
-                        style : GoogleFonts.itim(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
-                        ),
-                      ),),
+                    SizedBox(
+                      width: 0.05 * size.width,
                     ),
-                    SizedBox(width: 0.05*size.width,),
                     Container(
-                      height: 0.15*size.height,
-                      width: 0.3*size.width,
-                      decoration:BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/images/file.png'))
-                      ), 
-                      child: Center(child: Text(
-                        "Carte xxx", 
-                        style : GoogleFonts.itim(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
+                      height: 0.15 * size.height,
+                      width: 0.3 * size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/file.png'))),
+                      child: Center(
+                        child: Text(
+                          "Carte xxx",
+                          style: GoogleFonts.itim(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                            color: myDark,
+                          ),
                         ),
-                      ),),
+                      ),
                     ),
-                    SizedBox(width: 0.05*size.width,),
+                    SizedBox(
+                      width: 0.05 * size.width,
+                    ),
                     Container(
-                      height: 0.15*size.height,
-                      width: 0.3*size.width,
-                      decoration:BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/images/file.png'))
-                      ), 
-                      child: Center(child: Text(
-                        "Carte xxx", 
-                        style : GoogleFonts.itim(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.bold,
-                          color: myDark,
+                      height: 0.15 * size.height,
+                      width: 0.3 * size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/file.png'))),
+                      child: Center(
+                        child: Text(
+                          "Carte xxx",
+                          style: GoogleFonts.itim(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                            color: myDark,
+                          ),
                         ),
-                      ),),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 0.05 * size.width,
+                    ),
+                    Container(
+                      height: 0.15 * size.height,
+                      width: 0.3 * size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/file.png'))),
+                      child: Center(
+                        child: Text(
+                          "Carte xxx",
+                          style: GoogleFonts.itim(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
+                            color: myDark,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
-              ) , 
+              ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: 2,
+        selectedIndex: 5,
         onTap: (index) {
           switch (index) {
             case 0:

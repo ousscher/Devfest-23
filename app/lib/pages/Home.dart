@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class Home extends StatefulWidget {
   int lotNumber;
-  Home({Key? key, required this.lotNumber }) : super(key: key);
+  Home({Key? key, required this.lotNumber}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -16,11 +15,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late String userName;
-  
+
   Future<void> fetchDataUser() async {
     try {
       final response = await http.get(
-        Uri.parse('http://10.0.2.2:4000/api/get/:${widget.lotNumber}' , ),
+        Uri.parse(
+          'http://10.0.2.2:4000/api/get/:${widget.lotNumber}',
+        ),
       );
       if (response.statusCode == 200) {
         print(response);
@@ -125,7 +126,7 @@ class _HomeState extends State<Home> {
                           width: 140,
                         ),
                         Text(
-                          'Hello {user}!',
+                          'Hello Geust!',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.itim(
                             fontSize: 38,
@@ -228,7 +229,7 @@ class _HomeState extends State<Home> {
             ],
           ),
           child: CustomBottomNavigationBar(
-            selectedIndex: selectedIndex,
+            selectedIndex: 0,
             onTap: (index) {
               switch (index) {
                 case 0:
@@ -245,6 +246,9 @@ class _HomeState extends State<Home> {
                   break;
                 case 4:
                   Navigator.pushReplacementNamed(context, '/virtual');
+                  break;
+                case 5:
+                  Navigator.pushNamed(context, '/files');
                   break;
               }
             },

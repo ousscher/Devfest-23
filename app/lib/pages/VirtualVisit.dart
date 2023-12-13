@@ -22,7 +22,10 @@ class _VirtualVisitState extends State<VirtualVisit> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CustomAppBar(titleText: 'Virtual Visit'),
+          child: CustomAppBar(
+            titleText: 'Virtual Visit',
+            context: context,
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -185,6 +188,9 @@ class _VirtualVisitState extends State<VirtualVisit> {
                 break;
               case 4:
                 Navigator.pushNamed(context, '/virtual');
+                break;
+              case 5:
+                Navigator.pushNamed(context, '/files');
                 break;
             }
           },
