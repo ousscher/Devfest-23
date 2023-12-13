@@ -17,24 +17,25 @@ const loginUser = async (req , res)=>{
         }
 
         const exist = await User.findOne({email})
+        console.log(exist)
         if(!exist){
             throw Error('Incorrect email')
         }
 
         const passwordMatch = await bcrypt.compare(password, exist.password);
-
+        console.log(passwordMatch)
         if (!passwordMatch) {
         throw new Error('Invalid password');
         }
 
 
-        const payload = { userId: data._id }
+        const payload = { userId: exist._id }
         const token = createToken(payload)
 
         res.status(200).json({userName : exist.userName , token : token})
 
     } catch (error) {
-        
+        res.status(500).json({error : error.message})
     }
 };
 
