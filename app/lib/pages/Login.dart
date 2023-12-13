@@ -52,7 +52,9 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(height: 0.05*size.height,),
+              SizedBox(
+                height: 0.05 * size.height,
+              ),
               Container(
                 height: 0.20 * size.height,
                 decoration: BoxDecoration(
@@ -100,10 +102,10 @@ class _LoginState extends State<Login> {
                                 prefixIcon: Icon(Icons.person),
                                 filled: true, // Active le remplissage du fond
                                 fillColor: myWhite,
-                                hintStyle:  GoogleFonts.itim(
-                          color: myGrey,
-                          fontSize: 20.0,
-                        ),
+                                hintStyle: GoogleFonts.itim(
+                                  color: myGrey,
+                                  fontSize: 20.0,
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.circular(size.width * 0.04),
@@ -144,8 +146,8 @@ class _LoginState extends State<Login> {
                                 hintText: 'Password',
                                 prefixIcon: Icon(Icons.lock),
                                 filled: true, // Active le remplissage du fond
-                                fillColor: myWhite, 
-                                hintStyle:  GoogleFonts.itim(
+                                fillColor: myWhite,
+                                hintStyle: GoogleFonts.itim(
                                   color: myGrey,
                                   fontSize: 20.0,
                                 ),
@@ -203,8 +205,8 @@ class _LoginState extends State<Login> {
                                 return myOrange;
                               },
                             ),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.circular(size.width * 0.02),
@@ -212,17 +214,20 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           onPressed: () async {
-                            //la validation de la requete
+                            if (_formKey.currentState!.validate()) {
+                              // Les champs sont valides, soumettre la requête
+                              //submitter form
+                              Navigator.pushReplacementNamed(context, '/');
+                            }
                           },
                           child: Text(
                             'SIGN IN',
                             style: GoogleFonts.itim(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                          color: myWhite,
-                          letterSpacing: 2.0,
-                          
-                        ),
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              color: myWhite,
+                              letterSpacing: 2.0,
+                            ),
                           ),
                         ),
                       ),

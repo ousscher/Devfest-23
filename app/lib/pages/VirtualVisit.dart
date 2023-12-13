@@ -36,32 +36,6 @@ class _VirtualVisitState extends State<VirtualVisit> {
                   height: 0.93 * size.height,
                   child: Column(
                     children: [
-                      // Container(
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Padding(
-                      //         padding: EdgeInsets.all(8.0),
-                      //         child: Icon(
-                      //           Icons.arrow_back_ios_new,
-                      //           color: myWhite,
-                      //         ),
-                      //       ),
-                      //       Center(
-                      // child: Text(
-                      //   'Virtual visit',
-                      //   style: GoogleFonts.itim(
-                      //     color: myWhite,
-                      //     fontSize: 20.0,
-                      //   ),
-                      // ),
-                      //       ),
-                      //       Container(
-                      //         width: 0.1 * size.width,
-                      //       )
-                      //     ],
-                      //   ),
-                      // ),
                       SizedBox(
                         height: 0.05 * size.height,
                       ),
