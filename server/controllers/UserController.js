@@ -11,7 +11,6 @@ const createToken = (payload)=>{
 //login user
 const loginUser = async (req , res)=>{
     const {email , password} = req.body
-
     try {
         if(!email || !password){
             throw Error('Please fill all the fieldes')
