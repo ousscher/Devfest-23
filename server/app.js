@@ -6,6 +6,7 @@ const connectDB = require('./models/activate')
 const aprRouter = require('./routes/appartementRoute')
 const adminRouter = require('./routes/adminRouter')
 const progressRouter = require('./routes/progressRouter')
+const paimentRouter = require('./routes/paimentRouter')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
 
@@ -27,6 +28,7 @@ app.use('/api/user' ,userRoutes );
 app.use('/api/apartement' , aprRouter)
 app.use('/api/admin' , adminRouter)
 app.use('/api/progress' , progressRouter)
+app.use('/api/paiment' , paimentRouter)
 
 
 

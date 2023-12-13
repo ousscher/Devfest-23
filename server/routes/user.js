@@ -7,6 +7,6 @@ router.post('/login', loginUser);
 //signup route
 router.post('/signup', signupUser)
 
-router.get('/:lotNumber', getUser)
+
 
 module.exports = router;
