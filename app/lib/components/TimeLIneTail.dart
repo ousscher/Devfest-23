@@ -34,7 +34,7 @@ class BuildTimelineTile extends StatelessWidget {
             color: myDark,
           ),
           indicatorStyle: IndicatorStyle(
-            width: 40,
+            width: 20,
             color: myDark,
             iconStyle: IconStyle(iconData: Icons.done, color: myWhite),
           ),
