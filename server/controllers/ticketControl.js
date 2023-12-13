@@ -2,9 +2,9 @@ const Ticket = require("../models/ticket");
 const Appartement = require("../models/appartement");
 const addTicket = async (req, res) => {
   try {
-    const { type, content, title, lotNumber } = req.body;
+    const { ticketType, content, title, lotNumber } = req.body;
 
-    if (!type) {
+    if (!ticketType) {
       throw Error("fill the type field");
     }
     const apr = await Appartement.findOne({ lotNumber });
@@ -14,16 +14,16 @@ const addTicket = async (req, res) => {
     }
 
     const data = await Ticket.create({
-      type,
+      ticketType,
       content,
       title,
       lotNumber: apr._id,
-      status : flase
+      status: flase,
     });
 
-    res.status(201).json({data});
+    res.status(201).json({ data });
   } catch (error) {
-    res.status(500).send({error : error.message});
+    res.status(500).send({ error: error.message });
   }
 };
 
@@ -46,6 +46,21 @@ const getTicket = async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 };
+const getTickets = async (req, res) => {
+  const { lotNumber } = req.params;
+
+  try {
+    const tickets = await Appartement.find()
+
+    
+
+    // io.emit("new-notification", notifications);
+
+    res.status(200).send(tickets);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+};
 const deleteTicket = async (req, res) => {
   try {
     await Ticket.deleteMany({});
@@ -54,4 +69,4 @@ const deleteTicket = async (req, res) => {
     res.status(500).send(error);
   }
 };
-module.exports = { addTicket, getTicket, deleteTicket };
+module.exports = { addTicket, getTicket, deleteTicket,getTickets };

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Counter = require("./counter");
 const ticketSchema = new mongoose.Schema(
   {
     ticketType: {

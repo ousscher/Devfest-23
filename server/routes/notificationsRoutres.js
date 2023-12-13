@@ -2,7 +2,7 @@ const Notification = require("../models/Notification");
 const express = require("express");
 const router = express.Router();
 const {
-
+  addNotif,
   getNotif,
   markRead,
   markReadAll,
@@ -43,5 +43,5 @@ router.get("", getNotif);
 router.get("/new-notif", newNotif);
 router.post("/mark-read/:id", markRead);
 router.post("/mark-read-all", markReadAll);
-// router.delete("/delete-notif", delteNotifications);
+router.delete("/delete-notif", delteNotifications);
 module.exports = router;
