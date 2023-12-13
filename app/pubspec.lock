@@ -372,7 +372,11 @@ packages:
       sha256: "75760ffd7786fffdfb9597c35c5b27eaeec82be8edfb6d71d32651128ed7aab8"
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
+    version: "0.4.16"
+=======
     version: "0.6.0"
+>>>>>>> 3c5e50559c3e269d10a333894155874b6a942712
   timeline_tile:
     dependency: "direct main"
     description:

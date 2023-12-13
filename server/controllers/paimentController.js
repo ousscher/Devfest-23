@@ -7,7 +7,7 @@ const createPaiment = async(req , res)=>{
     const {image , deadline , payed , lotNumber} = req.body
 
     try {
-        if(!image || !deadline || !payed || !lotNumber){
+        if(!image || !deadline  || !payed || !lotNumber){
             throw Error('Please fill All the filed')
         }
 
