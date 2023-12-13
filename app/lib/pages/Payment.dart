@@ -1,14 +1,14 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Progress extends StatefulWidget {
-  const Progress({super.key});
+class Payment extends StatefulWidget {
+  const Payment({super.key});
 
   @override
-  State<Progress> createState() => _ProgressState();
+  State<Payment> createState() => _PaymentState();
 }
 
-class _ProgressState extends State<Progress> {
+class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

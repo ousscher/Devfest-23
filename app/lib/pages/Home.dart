@@ -206,19 +206,19 @@ class _HomeState extends State<Home> {
             onTap: (index) {
               switch (index) {
                 case 0:
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pushReplacementNamed(context, '/');
                   break;
                 case 1:
-                  Navigator.pushNamed(context, '/progress');
+                  Navigator.pushReplacementNamed(context, '/progress');
                   break;
                 case 2:
-                  Navigator.pushNamed(context, '/notification');
+                  Navigator.pushReplacementNamed(context, '/notification');
                   break;
                 case 3:
-                  Navigator.pushNamed(context, '/payment');
+                  Navigator.pushReplacementNamed(context, '/payment');
                   break;
                 case 4:
-                  Navigator.pushNamed(context, '/virtual');
+                  Navigator.pushReplacementNamed(context, '/virtual');
                   break;
               }
             },

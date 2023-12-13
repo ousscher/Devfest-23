@@ -3,8 +3,7 @@ import 'package:app/utils/asset.dart';
 import 'package:flutter/material.dart';
 import 'package:app/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,8 +19,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) => Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Login())));
+    Future.delayed(const Duration(seconds: 2))
+        .then((value) => Navigator.pushNamed(context, '/login'));
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2000),
@@ -64,12 +63,16 @@ class _SplashScreenState extends State<SplashScreen>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Transform.scale(
-              scale: _animation!.value,
-              child: Image(image: AssetImage("assets/images/logo.png"))
-            ),
+                scale: _animation!.value,
+                child: Image(image: AssetImage("assets/images/logo.png"))),
             Text(
-              "Everyone tool",
-              style: Theme.of(context).textTheme.headlineMedium,
+              "Track your home",
+              style: GoogleFonts.itim(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
+                              color: myWhite,
+                              letterSpacing: 2.0,
+                            ),
             ),
           ],
         ),
