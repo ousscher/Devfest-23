@@ -63,7 +63,7 @@ const newNotif = async (req, res) => {
   }
 };
 module.exports = {
-
+  
   getNotif,
   markRead,
   markReadAll,

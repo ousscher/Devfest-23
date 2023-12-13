@@ -23,3 +23,4 @@ async function sendPushNotification(fcmToken, title, body) {
     console.error("Error sending message:", error);
   }
 }
+module.exports={sendPushNotification}
