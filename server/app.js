@@ -38,7 +38,7 @@ const start = ()=>{
     connectDB(process.env.MONGO_URI)
     .then(()=>{
             app.listen(process.env.PORT , ()=>{
-                console.log("connect to db and listening on port ${process.env.PORT}");
+                console.log(`connect to db and listening on port ${process.env.PORT}`);
             });
         })
     .catch((err)=>{
