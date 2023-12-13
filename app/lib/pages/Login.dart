@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
           'Authorization': 'Bearer $token',
         };
         final getDataResponse = await http.get(
-        Uri.parse('http://lcoalhost:4000/api/user/login'),
+        Uri.parse('http://10.0.2.2:4000/api/user/login'),
         headers: authHeaders,
       );
         Navigator.push(
