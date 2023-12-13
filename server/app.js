@@ -9,10 +9,10 @@ const progressRouter = require('./routes/progressRouter')
 const paimentRouter = require('./routes/paimentRouter')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
+const cors = require('cors');
 
 
-
-
+app.use(cors()); // Active CORS pour toutes les routes
 
 app.use(express.json());
 
