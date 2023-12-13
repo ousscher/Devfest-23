@@ -28,5 +28,19 @@ const createProgress = async(req,res)=>{
     }
 }
 
+const getProgress = async(req,res)=>{
+    const{lotNumber} = req.params
+    try {
+        const apr = await Appartement.findOne({lotNumber})
+        if(!apr){
+            throw Error('appartement doesn\'n existe')
+        }
+        const progressData = await Progress.findOne({lot : apr._id})
+        res.status(200).json({progressData})
+    } catch (error) {
+        res.status(500).json({error : error.message})
+    }
+}
 
-module.exports = createProgress
+
+module.exports = {createProgress , getProgress}

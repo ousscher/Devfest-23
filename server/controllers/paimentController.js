@@ -7,7 +7,7 @@ const createPaiment = async(req , res)=>{
     const {image , deadline , payed , lotNumber} = req.body
 
     try {
-        if(!image || !deadline || !payed || !lotNumber){
+        if(!image || !deadline  || !payed || !lotNumber){
             throw Error('Please fill All the filed')
         }
 
@@ -34,4 +34,18 @@ const createPaiment = async(req , res)=>{
 
 }
 
-module.exports = createPaiment
+const getPaiment = async(req,res)=>{
+    const{lotNumber} = req.params
+    try {
+        const apr = await Appartement.findOne({lotNumber})
+        if(!apr){
+            throw Error('appartement doesn\'n existe')
+        }
+        const paimentData = await Paiment.findOne({lot : apr._id})
+        res.status(200).json({paimentData})
+    } catch (error) {
+        res.status(500).json({error : error.message})
+    }
+}
+
+module.exports = {createPaiment , getPaiment}
