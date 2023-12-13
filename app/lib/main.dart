@@ -1,7 +1,15 @@
+import 'package:app/pages/Home.dart';
+import 'package:app/pages/Login.dart';
+import 'package:app/pages/Payment.dart';
+import 'package:app/pages/Profile.dart';
+import 'package:app/pages/SplachScreen.dart';
+import 'package:app/pages/VirtualVisit.dart';
+import 'package:app/pages/Progress.dart';
+import 'package:app/pages/Notification.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,56 +19,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        fontFamily: 'itim',
+        // in order to have a coherent typo add the text style here to reuse it then
+        textTheme: const TextTheme(
+          // exapmple
+          headlineMedium: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-    ));
+      initialRoute: "/SplashScreen",
+      routes: {
+        "/SplashScreen": (context) => const SplashScreen(),
+        "/login": (context) => const Login(),
+        "profil": (context) => const Profile(),
+        "/": (context) => Home(),
+        "/progress" : (context) => Progress(),
+        "/notification" : (context) => NotificationPage(),
+        "/payment" : (context) => Payment(),
+        "/virtual": (context) => VirtualVisit(),
+      },
+    );
   }
 }

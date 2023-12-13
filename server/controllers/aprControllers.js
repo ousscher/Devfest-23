@@ -1,11 +1,11 @@
 const Appartement = require('../models/appartement')
 
 const aprPost= async(req ,res)=>{
-    const {location , bloc , etage , lotNumber , typeAppartement} = req.body
+    const {location , bloc , etage , lotNumber , typeAppartement , price} = req.body
     
     try {
 
-        if(!location || !bloc || !etage || !lotNumber || !typeAppartement){
+        if(!location || !bloc || !etage || !lotNumber || !typeAppartement || !price){
             throw Error('Please fill all rhe fields')
         }
 
@@ -14,10 +14,10 @@ const aprPost= async(req ,res)=>{
         if(existeLot){
             throw Error('There is another lot with this number')
         }
-        const data = await Appartement.create({location , bloc , etage , lotNumber , typeAppartement})
+        const data = await Appartement.create({location , bloc , etage , lotNumber , typeAppartement , price})
             res.status(201).json({data})
     } catch (error) {
-        res.status(500).json(err)
+        res.status(500).json({error : error.message})
     }
 }
 

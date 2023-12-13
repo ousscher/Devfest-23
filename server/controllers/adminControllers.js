@@ -1,30 +1,43 @@
-const User = require('../models/UserModel')
-const Appartement = require('../models/appartement')
+const User = require('../models/UserModel');
+const Appartement = require('../models/appartement');
 
-const admin = async(req,res,next)=>{
-    const {rest , lotNumber } = req.body
+const admin = async (req, res, next) => {
+    const { payed, lotNumber } = req.body;
 
     try {
-
-        if(!rest || !lotNumber){
-            throw Error('Please fill all the fields')
+        if (!payed || !lotNumber) {
+            throw Error('Please fill all the fields');
         }
 
-        const apr_id = await Appartement.findOne({lotNumber})
+        const apr = await Appartement.findOne({ lotNumber });
 
-        if(apr_id){
-            throw Error('there is no lot with this number')
+        if (!apr) {
+            throw Error('There is no lot with this number');
         }
 
-        const user_id = await User.findOne({lot : apr_id._id})
+        const user = await User.findOne({ lot: apr._id });
 
-        const data = await User.findByIdAndUpdate(user_id.id , {rest} , { new: true })
+        if (!user) {
+            throw Error('User not found for the given lot');
+        }
 
-        res.status(200).json({data})
-    } catch (err) {
-        res.status(500).json({err})
+        // Push the payment to the array
+        user.paiment.push(payed);
+
+        // Save the updated document
+        let data = await user.save();
+        const somme = user.paiment.reduce((somme, currentValue) => {
+            return somme + currentValue;
+        }, 0);
+        const rest = apr.price - somme
+
+        data = await User.findOneAndUpdate({email : user.email}, {rest}, { new: true })
+        
+
+        res.status(200).json({ data });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
+};
 
-}
-
-module.exports = admin
+module.exports = admin;

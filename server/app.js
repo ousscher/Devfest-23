@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-
 const app = express();
 const server = http.createServer(app);
 
@@ -36,6 +35,8 @@ const adminRouter = require("./routes/adminRouter");
 const notifRouter = require("./routes/notificationsRoutres");
 const { addNotif } = require("./controllers/Notification");
 const Notification = require("./models/Notification");
+app.use('/api/progress' , progressRouter)
+app.use('/api/paiment' , paimentRouter)
 app.use("/api/user", userRoutes);
 app.use("/api/apartement", aprRouter);
 app.use("/api/admin", adminRouter);

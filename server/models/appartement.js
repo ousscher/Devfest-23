@@ -7,6 +7,7 @@ const appartementSchema = new Schema({
         type: String,
         required: true,
     },
+
     bloc: {
         type: Number,
         required: true,
@@ -23,7 +24,10 @@ const appartementSchema = new Schema({
         type: String,
         required: true,
     },
-
+    price : {
+        type : Number ,
+        required : true
+    }
 });
 
 const Appartment = mongoose.model('appartement', appartementSchema);
