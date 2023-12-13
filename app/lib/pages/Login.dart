@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -24,49 +25,49 @@ Future<void> saveToken(String token) async {
 
 class _LoginState extends State<Login> {
   Future<void> loginUser(String email, String password) async {
-  try {
-    final response = await http.post(
-      Uri.parse('http://localhost:4000/api/user/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(<String, String>{
-        'email': email,
-        'password': password,
-      }),
-    );
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      final String token = responseData['token'];
+    try {
+      final response = await http.post(
+        Uri.parse('http://10.0.2.2:4000/api/user/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(<String, String>{
+          'email': email,
+          'password': password,
+        }),
+      );
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final String token = responseData['token'];
 
-      // Save the token to SharedPreferences
-      saveToken(token);
+        // Save the token to SharedPreferences
+        saveToken(token);
+        print(responseData);
 
-      // Set the token in the Authorization header for subsequent requests
-      final Map<String, String> authHeaders = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      };
-
-      // Example: Make a GET request with the token
-      final getDataResponse = await http.get(
-        Uri.parse('http://localhost:4000/api/some/protected/resource'),
+        // Set the token in the Authorization header for subsequent requests
+        final Map<String, String> authHeaders = {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        };
+        final getDataResponse = await http.get(
+        Uri.parse('http://lcoalhost:4000/api/user/login'),
         headers: authHeaders,
       );
-
-      // Handle the response as needed
-      print('GET Data Response: ${getDataResponse.statusCode}');
-      print('GET Data Body: ${getDataResponse.body}');
-
-      // Navigate to the next screen or perform other actions
-      Navigator.pushReplacementNamed(context, '/');
-    } else {
-      print('Échec de la connexion');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Home(
+                    lotNumber: responseData['lotNumber'],
+                  )),
+        );
+      } else {
+        print('Échec de la connexion');
+      }
+    } catch (error) {
+      print('Erreur lors de la connexion: ${error.toString()}');
     }
-  } catch (error) {
-    print('Erreur lors de la connexion: ${error.toString()}');
   }
-}
+
   List<String> doctorMails = [];
   final _formKey = GlobalKey<FormState>();
   String email = '';

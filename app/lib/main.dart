@@ -1,3 +1,4 @@
+import 'package:app/pages/FileSharingSystem.dart';
 import 'package:app/pages/Home.dart';
 import 'package:app/pages/Login.dart';
 import 'package:app/pages/Payment.dart';
@@ -32,16 +33,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: "/SplashScreen",
+      initialRoute: "/notification",
       routes: {
         "/SplashScreen": (context) => const SplashScreen(),
         "/login": (context) => const Login(),
         "profil": (context) => const Profile(),
-        "/": (context) => Home(),
+        // "/": (context) => Home(),
         "/progress" : (context) => Progress(),
         "/notification" : (context) => NotificationPage(),
         "/payment" : (context) => Payment(),
         "/virtual": (context) => VirtualVisit(),
+        "/files": (context) => FileSharingSystem(),
       },
     );
   }
