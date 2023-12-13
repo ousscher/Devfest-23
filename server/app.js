@@ -15,19 +15,12 @@ const paimentRouter = require('./routes/paimentRouter')
 const getRouters = require('./routes/getRouters')
 // const workoutRoutes = require('./routes/workouts');
 const userRoutes = require('./routes/user')
-// Database connection
-const connectDB = require("./models/activate");
-const startDatabaseConnection = async () => {
-  try {
-    await connectDB(process.env.MONGO_URI);
-    console.log("Database connected successfully");
-  } catch (err) {
-    console.error("Database connection failed", err);
-    process.exit(1);
-  }
-};
+const cors = require('cors');
 
-// Middleware configuration
+
+app.use(cors()); // Active CORS pour toutes les routes
+
+
 app.use(express.json());
 app.use(cors());
 app.use((req, res, next) => {

@@ -6,6 +6,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:app/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:app/constants.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -14,7 +17,56 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 
+Future<void> saveToken(String token) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setString('authToken', token);
+}
+
 class _LoginState extends State<Login> {
+  Future<void> loginUser(String email, String password) async {
+  try {
+    final response = await http.post(
+      Uri.parse('http://localhost:4000/api/user/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final String token = responseData['token'];
+
+      // Save the token to SharedPreferences
+      saveToken(token);
+
+      // Set the token in the Authorization header for subsequent requests
+      final Map<String, String> authHeaders = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+
+      // Example: Make a GET request with the token
+      final getDataResponse = await http.get(
+        Uri.parse('http://localhost:4000/api/some/protected/resource'),
+        headers: authHeaders,
+      );
+
+      // Handle the response as needed
+      print('GET Data Response: ${getDataResponse.statusCode}');
+      print('GET Data Body: ${getDataResponse.body}');
+
+      // Navigate to the next screen or perform other actions
+      Navigator.pushReplacementNamed(context, '/');
+    } else {
+      print('Échec de la connexion');
+    }
+  } catch (error) {
+    print('Erreur lors de la connexion: ${error.toString()}');
+  }
+}
   List<String> doctorMails = [];
   final _formKey = GlobalKey<FormState>();
   String email = '';
@@ -98,7 +150,7 @@ class _LoginState extends State<Login> {
                           children: <Widget>[
                             TextFormField(
                               decoration: InputDecoration(
-                                hintText: 'Username',
+                                hintText: 'E-mail',
                                 prefixIcon: Icon(Icons.person),
                                 filled: true, // Active le remplissage du fond
                                 fillColor: myWhite,
@@ -141,7 +193,7 @@ class _LoginState extends State<Login> {
                             SizedBox(height: size.height * 0.02),
                             TextFormField(
                               obscureText: true,
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: myGrey),
                               decoration: InputDecoration(
                                 hintText: 'Password',
                                 prefixIcon: Icon(Icons.lock),
@@ -215,9 +267,7 @@ class _LoginState extends State<Login> {
                           ),
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // Les champs sont valides, soumettre la requête
-                              //submitter form
-                              Navigator.pushReplacementNamed(context, '/');
+                              loginUser(email, passwd);
                             }
                           },
                           child: Text(
